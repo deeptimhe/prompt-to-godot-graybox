@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "game": {
+    "title": "Signal Corridor",
+    "objective": "Collect both orbs, activate the floor switch, pass the door, and reach the goal.",
+    "completion_message": "Signal corridor complete"
+  },
+  "player": {
+    "walk_speed": 5.5,
+    "sprint_speed": 9.0,
+    "acceleration": 28.0,
+    "deceleration": 32.0,
+    "air_control": 0.35,
+    "turn_speed": 12.0,
+    "gravity": 24.0,
+    "jump_velocity": 8.5
+  },
+  "camera": {
+    "distance": 6.5,
+    "fov": 70.0,
+    "initial_pitch_degrees": -10.0
+  },
+  "spawn": {
+    "position": [0, 1.2, 5],
+    "rotation_degrees": [0, 0, 0]
+  },
+  "objects": [
+    {
+      "id": "start_floor",
+      "type": "static_box",
+      "transform": { "position": [0, -0.5, 2], "rotation_degrees": [0, 0, 0] },
+      "size": [8, 1, 12],
+      "color": "#8D96A1"
+    },
+    {
+      "id": "left_wall",
+      "type": "static_box",
+      "transform": { "position": [-4.25, 1.5, -5], "rotation_degrees": [0, 0, 0] },
+      "size": [0.5, 4, 26],
+      "color": "#68727E"
+    },
+    {
+      "id": "right_wall",
+      "type": "static_box",
+      "transform": { "position": [4.25, 1.5, -5], "rotation_degrees": [0, 0, 0] },
+      "size": [0.5, 4, 26],
+      "color": "#68727E"
+    },
+    {
+      "id": "first_orb",
+      "type": "collectible",
+      "transform": { "position": [0, 1.1, 1], "rotation_degrees": [0, 0, 0] },
+      "size": [0.75, 0.75, 0.75],
+      "color": "#FFD75A",
+      "value": 1
+    },
+    {
+      "id": "gap_hazard",
+      "type": "hazard",
+      "transform": { "position": [0, -1.5, -4.5], "rotation_degrees": [0, 0, 0] },
+      "size": [8, 0.5, 3],
+      "color": "#D94B4B88"
+    },
+    {
+      "id": "rise_ramp",
+      "type": "ramp",
+      "transform": { "position": [0, 0.1, -4.5], "rotation_degrees": [12, 0, 0] },
+      "size": [3, 0.7, 5],
+      "color": "#7893A6"
+    },
+    {
+      "id": "upper_floor",
+      "type": "static_box",
+      "transform": { "position": [0, 0.25, -9], "rotation_degrees": [0, 0, 0] },
+      "size": [8, 1, 6],
+      "color": "#8D96A1"
+    },
+    {
+      "id": "side_shuttle",
+      "type": "moving_platform",
+      "transform": { "position": [-2.5, 1.0, -7], "rotation_degrees": [0, 0, 0] },
+      "size": [2, 0.5, 2],
+      "color": "#E3B958",
+      "movement": { "offset": [5, 0, 0], "duration": 2.5 }
+    },
+    {
+      "id": "second_orb",
+      "type": "collectible",
+      "transform": { "position": [0, 1.5, -8], "rotation_degrees": [0, 0, 0] },
+      "size": [0.75, 0.75, 0.75],
+      "color": "#FFD75A",
+      "value": 1
+    },
+    {
+      "id": "gate_switch",
+      "type": "switch",
+      "transform": { "position": [0, 0.9, -10.5], "rotation_degrees": [0, 0, 0] },
+      "size": [1.8, 0.25, 1.8],
+      "color": "#5E9EFF"
+    },
+    {
+      "id": "signal_door",
+      "type": "door",
+      "transform": { "position": [0, 2.0, -12.25], "rotation_degrees": [0, 0, 0] },
+      "size": [7.5, 3.5, 0.45],
+      "color": "#BD6DE8",
+      "requirements": { "collectibles": 2, "switches": ["gate_switch"] }
+    },
+    {
+      "id": "finish_floor",
+      "type": "static_box",
+      "transform": { "position": [0, -0.5, -16], "rotation_degrees": [0, 0, 0] },
+      "size": [8, 1, 8],
+      "color": "#8D96A1"
+    },
+    {
+      "id": "finish_goal",
+      "type": "goal",
+      "transform": { "position": [0, 1.5, -18], "rotation_degrees": [0, 0, 0] },
+      "size": [4, 3, 1],
+      "color": "#55D68A99",
+      "requirements": { "collectibles": 2, "switches": ["gate_switch"] }
+    },
+    {
+      "id": "start_marker",
+      "type": "marker",
+      "transform": { "position": [0, 0.25, 5], "rotation_degrees": [0, 0, 0] },
+      "size": [0.4, 0.5, 0.4],
+      "color": "#5E9EFF"
+    }
+  ]
+}

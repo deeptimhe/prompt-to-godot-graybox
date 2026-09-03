@@ -1,0 +1,183 @@
+{
+  "camera": {
+    "distance": 7.0,
+    "fov": 70.0,
+    "initial_pitch_degrees": -20.0
+  },
+  "game": {
+    "completion_message": "Vault opened and objective complete!",
+    "objective": "Collect two shards, activate the switch, and pass the vault door.",
+    "title": "Switch Vault"
+  },
+  "objects": [
+    {
+      "color": "#9CA3AF",
+      "id": "corridor_floor",
+      "size": [
+        10.0,
+        0.5,
+        36.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          -12.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "static_box"
+    },
+    {
+      "color": "#F6C945",
+      "id": "shard_a",
+      "size": [
+        0.8,
+        1.2,
+        0.8
+      ],
+      "transform": {
+        "position": [
+          -2.0,
+          1.0,
+          -5.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "collectible",
+      "value": 1
+    },
+    {
+      "color": "#F6C945",
+      "id": "shard_b",
+      "size": [
+        0.8,
+        1.2,
+        0.8
+      ],
+      "transform": {
+        "position": [
+          2.0,
+          1.0,
+          -9.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "collectible",
+      "value": 1
+    },
+    {
+      "color": "#45A8F6",
+      "id": "vault_switch",
+      "size": [
+        2.0,
+        0.3,
+        2.0
+      ],
+      "transform": {
+        "position": [
+          -2.5,
+          0.4,
+          -13.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "switch"
+    },
+    {
+      "color": "#CB6B4E",
+      "id": "vault_door",
+      "requirements": {
+        "collectibles": 2,
+        "switches": [
+          "vault_switch"
+        ]
+      },
+      "size": [
+        8.0,
+        4.0,
+        0.8
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          2.0,
+          -17.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "door"
+    },
+    {
+      "color": "#4DD17A",
+      "id": "vault_goal",
+      "requirements": {
+        "collectibles": 2,
+        "switches": [
+          "vault_switch"
+        ]
+      },
+      "size": [
+        3.0,
+        3.0,
+        1.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          1.5,
+          -25.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "goal"
+    }
+  ],
+  "player": {
+    "acceleration": 22.0,
+    "air_control": 0.4,
+    "deceleration": 28.0,
+    "gravity": 24.0,
+    "jump_velocity": 8.5,
+    "sprint_speed": 8.0,
+    "turn_speed": 12.0,
+    "walk_speed": 5.0
+  },
+  "spawn": {
+    "position": [
+      0.0,
+      1.25,
+      3.0
+    ],
+    "rotation_degrees": [
+      0.0,
+      180.0,
+      0.0
+    ]
+  },
+  "version": 1
+}

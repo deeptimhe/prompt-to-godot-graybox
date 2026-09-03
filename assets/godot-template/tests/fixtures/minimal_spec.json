@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "game": {
+    "title": "Minimal Run",
+    "objective": "Walk to the goal.",
+    "completion_message": "Minimal run complete"
+  },
+  "player": {
+    "walk_speed": 4.0,
+    "sprint_speed": 7.0,
+    "acceleration": 20.0,
+    "deceleration": 24.0,
+    "air_control": 0.3,
+    "turn_speed": 10.0,
+    "gravity": 22.0,
+    "jump_velocity": 7.5
+  },
+  "camera": {
+    "distance": 5.0,
+    "fov": 65.0,
+    "initial_pitch_degrees": -8.0
+  },
+  "spawn": {
+    "position": [0, 1.2, 3],
+    "rotation_degrees": [0, 0, 0]
+  },
+  "objects": [
+    {
+      "id": "plain_floor",
+      "type": "static_box",
+      "transform": { "position": [0, -0.5, -1], "rotation_degrees": [0, 0, 0] },
+      "size": [7, 1, 12],
+      "color": "#8D96A1"
+    },
+    {
+      "id": "plain_finish",
+      "type": "goal",
+      "transform": { "position": [0, 1.5, -5], "rotation_degrees": [0, 0, 0] },
+      "size": [3, 3, 1],
+      "color": "#55D68A99",
+      "requirements": { "collectibles": 0, "switches": [] }
+    }
+  ]
+}

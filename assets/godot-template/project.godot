@@ -1,0 +1,26 @@
+; Generated graybox projects read all gameplay and level data from data/game_spec.json.
+
+config_version=5
+
+[application]
+
+config/name="Prompt to Godot Graybox"
+run/main_scene="res://main.tscn"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[physics]
+
+common/physics_ticks_per_second=60
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.08, 0.09, 0.11, 1)

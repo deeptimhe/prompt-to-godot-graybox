@@ -1,0 +1,155 @@
+{
+  "camera": {
+    "distance": 6.5,
+    "fov": 72.0,
+    "initial_pitch_degrees": -18.0
+  },
+  "game": {
+    "completion_message": "Course clear!",
+    "objective": "Cross the moving bridge and reach the green gate.",
+    "title": "Moving Bridge Sprint"
+  },
+  "objects": [
+    {
+      "color": "#A0A7B4",
+      "id": "start_floor",
+      "size": [
+        10.0,
+        0.5,
+        12.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "static_box"
+    },
+    {
+      "color": "#4F9BD9",
+      "id": "moving_bridge",
+      "movement": {
+        "duration": 2.4,
+        "offset": [
+          6.0,
+          0.0,
+          0.0
+        ]
+      },
+      "size": [
+        3.0,
+        0.5,
+        4.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          -9.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "moving_platform"
+    },
+    {
+      "color": "#A0A7B4",
+      "id": "finish_floor",
+      "size": [
+        12.0,
+        0.5,
+        12.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          -18.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "static_box"
+    },
+    {
+      "color": "#D9534FFF",
+      "id": "pit",
+      "size": [
+        14.0,
+        0.2,
+        6.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          -2.0,
+          -9.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "hazard"
+    },
+    {
+      "color": "#4DD17A",
+      "id": "finish_goal",
+      "size": [
+        3.0,
+        3.0,
+        1.0
+      ],
+      "transform": {
+        "position": [
+          0.0,
+          1.5,
+          -22.0
+        ],
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "type": "goal"
+    }
+  ],
+  "player": {
+    "acceleration": 24.0,
+    "air_control": 0.45,
+    "deceleration": 30.0,
+    "gravity": 24.0,
+    "jump_velocity": 9.0,
+    "sprint_speed": 9.0,
+    "turn_speed": 12.0,
+    "walk_speed": 5.5
+  },
+  "spawn": {
+    "position": [
+      0.0,
+      1.25,
+      3.0
+    ],
+    "rotation_degrees": [
+      0.0,
+      180.0,
+      0.0
+    ]
+  },
+  "version": 1
+}

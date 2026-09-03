@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run tooling tests
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+      - name: Validate bundled fixtures
+        run: |
+          python3 scripts/validate_spec.py scripts/fixtures/sprint_course.json
+          python3 scripts/validate_spec.py scripts/fixtures/switch_vault.json
+      - name: Install official Godot 4.3
+        run: |
+          GODOT_ARCHIVE="$RUNNER_TEMP/Godot_v4.3-stable_linux.x86_64.zip"
+          GODOT_DIR="$RUNNER_TEMP/godot-4.3"
+          curl --fail --location --retry 3 \
+            --output "$GODOT_ARCHIVE" \
+            https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          mkdir -p "$GODOT_DIR"
+          unzip -q "$GODOT_ARCHIVE" -d "$GODOT_DIR"
+          chmod +x "$GODOT_DIR/Godot_v4.3-stable_linux.x86_64"
+      - name: Generate and fully verify switch-vault fixture
+        run: |
+          python3 scripts/new_project.py \
+            --spec scripts/fixtures/switch_vault.json \
+            --output "$RUNNER_TEMP/switch-vault"
+          python3 scripts/verify_project.py \
+            --project "$RUNNER_TEMP/switch-vault" \
+            --godot "$RUNNER_TEMP/godot-4.3/Godot_v4.3-stable_linux.x86_64"
+      - name: Generate and fully verify sprint-course fixture
+        run: |
+          python3 scripts/new_project.py \
+            --spec scripts/fixtures/sprint_course.json \
+            --output "$RUNNER_TEMP/sprint-course"
+          python3 scripts/verify_project.py \
+            --project "$RUNNER_TEMP/sprint-course" \
+            --godot "$RUNNER_TEMP/godot-4.3/Godot_v4.3-stable_linux.x86_64"
