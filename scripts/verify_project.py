@@ -346,9 +346,9 @@ def _runtime_checks(
     if (
         match is None
         or int(match.group(1)) != 4
-        or int(match.group(2)) < 3
+        or int(match.group(2)) < 4
     ):
-        return [f"Godot 4.3 or newer in major version 4 is required; detected {version!r}"], checks, evidence
+        return [f"Godot 4.4 or newer in major version 4 is required; detected {version!r}"], checks, evidence
     checks.append(f"godot_version:{version}")
 
     runtime_context: tempfile.TemporaryDirectory[str] | None = None
