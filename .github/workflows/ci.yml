@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       - name: Run tooling tests
@@ -22,16 +22,17 @@ jobs:
         run: |
           python3 scripts/validate_spec.py scripts/fixtures/sprint_course.json
           python3 scripts/validate_spec.py scripts/fixtures/switch_vault.json
-      - name: Install official Godot 4.4
+      - name: Install official Godot 4.7.2
         run: |
-          GODOT_ARCHIVE="$RUNNER_TEMP/Godot_v4.4-stable_linux.x86_64.zip"
-          GODOT_DIR="$RUNNER_TEMP/godot-4.4"
+          GODOT_ARCHIVE="$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64.zip"
+          GODOT_DIR="$RUNNER_TEMP/godot-4.7.2"
           curl --fail --location --retry 3 \
             --output "$GODOT_ARCHIVE" \
-            https://github.com/godotengine/godot-builds/releases/download/4.4-stable/Godot_v4.4-stable_linux.x86_64.zip
+            https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $GODOT_ARCHIVE" | sha256sum --check
           mkdir -p "$GODOT_DIR"
           unzip -q "$GODOT_ARCHIVE" -d "$GODOT_DIR"
-          chmod +x "$GODOT_DIR/Godot_v4.4-stable_linux.x86_64"
+          chmod +x "$GODOT_DIR/Godot_v4.7.2-stable_linux.x86_64"
       - name: Generate and fully verify switch-vault fixture
         run: |
           python3 scripts/new_project.py \
@@ -39,7 +40,7 @@ jobs:
             --output "$RUNNER_TEMP/switch-vault"
           python3 scripts/verify_project.py \
             --project "$RUNNER_TEMP/switch-vault" \
-            --godot "$RUNNER_TEMP/godot-4.4/Godot_v4.4-stable_linux.x86_64"
+            --godot "$RUNNER_TEMP/godot-4.7.2/Godot_v4.7.2-stable_linux.x86_64"
       - name: Generate and fully verify sprint-course fixture
         run: |
           python3 scripts/new_project.py \
@@ -47,4 +48,4 @@ jobs:
             --output "$RUNNER_TEMP/sprint-course"
           python3 scripts/verify_project.py \
             --project "$RUNNER_TEMP/sprint-course" \
-            --godot "$RUNNER_TEMP/godot-4.4/Godot_v4.4-stable_linux.x86_64"
+            --godot "$RUNNER_TEMP/godot-4.7.2/Godot_v4.7.2-stable_linux.x86_64"

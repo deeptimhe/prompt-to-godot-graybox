@@ -342,13 +342,18 @@ def _runtime_checks(
         return [f"Godot --version failed:\n{_tail(version_output)}"], checks, evidence
     version = version_output.strip().splitlines()[0] if version_output.strip() else "unknown"
     evidence["godot_version"] = version
-    match = re.match(r"^(\d+)\.(\d+)(?:\.|$)", version)
+    match = re.match(r"^(\d+)\.(\d+)(?:\.(\d+))?(?:\.|$)", version)
+    detected_version = (
+        (int(match.group(1)), int(match.group(2)), int(match.group(3) or 0))
+        if match is not None
+        else None
+    )
     if (
-        match is None
-        or int(match.group(1)) != 4
-        or int(match.group(2)) < 4
+        detected_version is None
+        or detected_version[0] != 4
+        or detected_version < (4, 7, 2)
     ):
-        return [f"Godot 4.4 or newer in major version 4 is required; detected {version!r}"], checks, evidence
+        return [f"Godot 4.7.2 or newer in major version 4 is required; detected {version!r}"], checks, evidence
     checks.append(f"godot_version:{version}")
 
     runtime_context: tempfile.TemporaryDirectory[str] | None = None

@@ -11,7 +11,7 @@ movement, camera, route, and game-state logic. Do not add textures or pretend th
 
 ## Fixed contract
 
-- Target Godot 4.4 or newer using the compatibility renderer and no external assets.
+- Target Godot 4.7.2 or newer using the compatibility renderer and no external assets.
 - Keep the third-person controller, orbit camera, collision, reset flow, HUD, and data-driven world.
 - Use only mechanics implemented by the bundled template. Read `references/game-spec.md` before
   writing a spec.

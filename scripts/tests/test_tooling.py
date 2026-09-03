@@ -597,15 +597,15 @@ class GenerationTests(unittest.TestCase):
         self.assertIsNone(evidence["marker"])
         self.assertEqual(0, evidence["exit_code"])
 
-    def test_runtime_rejects_godot_before_4_4(self) -> None:
+    def test_runtime_rejects_godot_before_4_7_2(self) -> None:
         with mock.patch.object(
-            verify_project, "_run", return_value=(0, "4.3.0.stable\n")
+            verify_project, "_run", return_value=(0, "4.7.1.stable\n")
         ):
             errors, _checks, evidence = verify_project._runtime_checks(
                 Path("/tmp/example"), Path("/tmp/godot"), load_fixture()
             )
-        self.assertIn("Godot 4.4 or newer", "\n".join(errors))
-        self.assertEqual("4.3.0.stable", evidence["godot_version"])
+        self.assertIn("Godot 4.7.2 or newer", "\n".join(errors))
+        self.assertEqual("4.7.1.stable", evidence["godot_version"])
 
     def test_runtime_rejects_future_major(self) -> None:
         with mock.patch.object(
@@ -686,7 +686,7 @@ class GenerationTests(unittest.TestCase):
         with mock.patch.object(
             verify_project,
             "_run",
-            side_effect=[(0, "4.4.0.stable\n"), (0, "import ok\n"), (0, output)],
+            side_effect=[(0, "4.7.2.stable\n"), (0, "import ok\n"), (0, output)],
         ):
             errors, checks, evidence = verify_project._runtime_checks(
                 Path("/tmp/example"), Path("/tmp/godot"), spec

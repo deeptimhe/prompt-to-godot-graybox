@@ -9,7 +9,7 @@ produces structural whitebox geometry rather than final art.
 
 ## What it provides
 
-- A Godot 4.4+ compatibility-renderer template with a third-person controller and orbit camera.
+- A Godot 4.7.2+ compatibility-renderer template with a third-person controller and orbit camera.
 - A strict versioned JSON schema for data-driven level construction.
 - Collectibles, permanent switches, requirement-driven doors and goals, hazards, ramps, and moving
   platforms.
@@ -21,7 +21,7 @@ produces structural whitebox geometry rather than final art.
 ## Requirements
 
 - Python 3.10 or newer.
-- Godot 4.4 or newer for full runtime verification.
+- Godot 4.7.2 or newer for full runtime verification.
 - No external gameplay assets or Python packages are required.
 
 ## Install as a Codex skill
